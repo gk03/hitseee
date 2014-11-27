@@ -4,11 +4,11 @@
         <link rel="import" href="bower_components/font-roboto/roboto.html">
         <link rel="import" href="bower_components/paper-button/paper-button.html">
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
-        
+
         <script src="bootstrap/js/jquery-1.11.1.js"></script>
         <script src="bootstrap/js/jquery-1.10.2.js"></script>
         <script src="bootstrap/js/jquery-ui.js"></script>
-        
+
         <title>HITSEEE '15</title>
         <style>
             body{
@@ -25,7 +25,7 @@
                 background-color: #999999;
             }
             paper-input-decorator{
-                width:40%;  
+                width:40%;
             }
             paper-button.colored {
               color: #D83B00;
@@ -97,7 +97,7 @@
                         <paper-input-decorator  value='{{value}}'  floatingLabel error="Username is required!">
                           <input id="nam" required>
                         </paper-input-decorator>
-                        <br/> 
+                        <br/>
                         Enter Your Password :
                         <paper-input-decorator value='{{value}}' floatingLabel error="Password is required!">
                           <input id="pass" type="password" required>

@@ -124,7 +124,10 @@
 
     </style>
     </head>
-    <body onload="countdown(year,month,day,hour,minute)">
+    <body onload="countdown(year,month,day,hour,minute);
+            c_que(0,1);
+            c_que(1,1);
+            c_que(2,1);">
         <paper-shadow  class="bar" z="2">
             <div class="header">
                 <div flux class="logo">
@@ -199,23 +202,22 @@
                       <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="p2"></span>
                       <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="p3"></span>
                       <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="p4"></span>
-                      <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="p5"></span>     
                     </paper-radio-group>
                 </center>
             </div>
         </div>
         <div id="che" class="main" style="display:none;">
-             <div class="lft">
+            <div class="lft">
                <paper-shadow z="2" class="chos2">
                    <span style="font:roboto; font-size:20px;">Questions</span>
                    <br/>
                    <br/>
                     <paper-radio-group class="blue" selected="0">
-                      <paper-radio-button  label="1"></paper-radio-button>
-                      <paper-radio-button  label="2"></paper-radio-button>
-                      <paper-radio-button  label="3"></paper-radio-button>
-                      <paper-radio-button  label="4"></paper-radio-button>
-                      <paper-radio-button  label="5"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(1,1)" label="1"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(1,2)" label="2"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(1,3)" label="3"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(1,4)" label="4"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(1,5)" label="5"></paper-radio-button>
                     </paper-radio-group>
                </paper-shadow>
             </div>
@@ -223,17 +225,16 @@
                <br/>
                <br/>
                <br/>
-                <span style="padding-left:150px;">Tis is question</span>
+                <span id="c_q" style="padding-left:150px;">Tis is question</span>
                 <br/>
                 <br/>
                 <br/>
                 <center>
                     <paper-radio-group selected="auto">
-                      <paper-radio-button  label="1"></paper-radio-button>
-                      <paper-radio-button  label="2"></paper-radio-button>
-                      <paper-radio-button  label="3"></paper-radio-button>
-                      <paper-radio-button  label="4"></paper-radio-button>
-                      <paper-radio-button  label="5"></paper-radio-button>
+                      <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="c1"></span>
+                      <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="c2"></span>
+                      <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="c3"></span>
+                      <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="c4"></span>
                     </paper-radio-group>
                 </center>
             </div>
@@ -245,11 +246,11 @@
                    <br/>
                    <br/>
                     <paper-radio-group class="blue" selected="0">
-                      <paper-radio-button  label="1"></paper-radio-button>
-                      <paper-radio-button  label="2"></paper-radio-button>
-                      <paper-radio-button  label="3"></paper-radio-button>
-                      <paper-radio-button  label="4"></paper-radio-button>
-                      <paper-radio-button  label="5"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(2,1)" label="1"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(2,2)" label="2"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(2,3)" label="3"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(2,4)" label="4"></paper-radio-button>
+                      <paper-radio-button  onclick="c_que(2,5)" label="5"></paper-radio-button>
                     </paper-radio-group>
                </paper-shadow>
             </div>
@@ -257,17 +258,16 @@
                <br/>
                <br/>
                <br/>
-                <span style="padding-left:150px;">Tis is question</span>
+                <span id="m_q" style="padding-left:150px;">Tis is question</span>
                 <br/>
                 <br/>
                 <br/>
                 <center>
                     <paper-radio-group selected="auto">
-                      <paper-radio-button  label="1"></paper-radio-button>
-                      <paper-radio-button  label="2"></paper-radio-button>
-                      <paper-radio-button  label="3"></paper-radio-button>
-                      <paper-radio-button  label="4"></paper-radio-button>
-                      <paper-radio-button  label="5"></paper-radio-button>
+                      <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="m1"></span>
+                      <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="m2"></span>
+                      <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="m3"></span>
+                      <paper-radio-button style="display: inline-block;"></paper-radio-button><span id="m4"></span>
                     </paper-radio-group>
                 </center>
             </div>
@@ -308,6 +308,8 @@
             }
         </style>
 <script type="text/javascript" src="pdb.json"></script>
+<script type="text/javascript" src="cdb.json"></script>
+<script type="text/javascript" src="mdb.json"></script>
 <script type="text/javascript">
         var a=0,b;
 
@@ -315,19 +317,16 @@
                 if(a==0)
                 {
                     b = parseInt(b);
-                    
                     var jsondb = JSON.parse(pque);
                       for(var i=0;i<5;i++)
                       {
                           if(jsondb.que[i].num==b)
                              {
-                                    var q_num = jsondb.que[i].num;
                                     var qu = jsondb.que[i].ques;
                                     var op1 = jsondb.que[i].op1;
                                     var op2 = jsondb.que[i].op2;
                                     var op3 = jsondb.que[i].op3;
                                     var op4 = jsondb.que[i].op4;
-                                    var op5 = jsondb.que[i].op5;                    
                              }
                       }
 
@@ -336,20 +335,51 @@
                     document.getElementById('p2').innerHTML = op2;
                     document.getElementById('p3').innerHTML = op3;
                     document.getElementById('p4').innerHTML = op4;
-                    document.getElementById('p5').innerHTML = op5;
 
                 }
                 else if(a==1)
                 {
-                  document.getElementById('phy').style.display = 'none' ;
-                  document.getElementById('che').style.display = 'block' ;
-                  document.getElementById('mat').style.display = 'none' ;
+                  b = parseInt(b);
+                    var jsondb = JSON.parse(cque);
+                      for(var i=0;i<5;i++)
+                      {
+                          if(jsondb.que[i].num==b)
+                             {
+                                    var qu = jsondb.que[i].ques;
+                                    var op1 = jsondb.que[i].op1;
+                                    var op2 = jsondb.que[i].op2;
+                                    var op3 = jsondb.que[i].op3;
+                                    var op4 = jsondb.que[i].op4;
+                             }
+                      }
+
+                    document.getElementById('c_q').innerHTML = qu;
+                    document.getElementById('c1').innerHTML = op1;
+                    document.getElementById('c2').innerHTML = op2;
+                    document.getElementById('c3').innerHTML = op3;
+                    document.getElementById('c4').innerHTML = op4;
                 }
                 else if(a==2)
                 {
-                  document.getElementById('phy').style.display = 'none' ;
-                  document.getElementById('che').style.display = 'none' ;
-                  document.getElementById('mat').style.display = 'block' ;
+                    b = parseInt(b);
+                    var jsondb = JSON.parse(mque);
+                      for(var i=0;i<5;i++)
+                      {
+                          if(jsondb.que[i].num==b)
+                             {
+                                    var qu = jsondb.que[i].ques;
+                                    var op1 = jsondb.que[i].op1;
+                                    var op2 = jsondb.que[i].op2;
+                                    var op3 = jsondb.que[i].op3;
+                                    var op4 = jsondb.que[i].op4;
+                             }
+                      }
+
+                    document.getElementById('m_q').innerHTML = qu;
+                    document.getElementById('m1').innerHTML = op1;
+                    document.getElementById('m2').innerHTML = op2;
+                    document.getElementById('m3').innerHTML = op3;
+                    document.getElementById('m4').innerHTML = op4;
                 }
             }
         </script>

@@ -2,7 +2,7 @@
     <head>
         <?php
 			$cad_name = $_POST['name'];  ?>
-        
+
         <link rel="import" href="bower_components/paper-button/paper-button.html">
         <style>
             paper-button.colored {
